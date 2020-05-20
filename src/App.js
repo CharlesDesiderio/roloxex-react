@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import DisplayCard from './DisplayCard.js';
 
-function App() {
+// HEY THIS IS DUMMY DATA. I've got a whole schema defined in the DisplayCard file. This is 100% going to be removed later so like, yeah.
+const basicData = {
+  name: {
+    family: "Smith",
+    given: "John"
+  }
+}
+
+// OH hey the backend stuff is gonna be done through Glitch, here's the link: https://apple-plausible-ladybug.glitch.me/
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DisplayCard data={basicData} />
+
     </div>
   );
 }
