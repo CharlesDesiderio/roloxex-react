@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // rolodex
 
@@ -15,11 +15,41 @@ import React from "react";
 // links: [{site-name, url}, ... ] <-- Can literally add anything, but I can detect for titles (facebook/twitter/instagram, etc) to pull a FontAwesome icon.
 // notes: ''
 
+
 const DisplayCard = (person) => {
+  
+  const [people, setPeople] = useState([]);
+  
+  const fetchData = () => {
+    fetch('https://apple-plausible-ladybug.glitch.me/names/')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setPeople(data)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+    
+  fetchData();
+
   return (
     <div>
       <h1>
-        {person.data.name.family}, {person.data.name.given}
+        {/* {person.data.name.family}, {person.data.name.given} */}
+        {people.map((x) => {
+          return (
+
+            <div>
+          <li>{x.name.family}, {x.name.given}</li>
+          <li>{x.age}</li>
+          <li>{x.gender}</li>
+        <li>{x.address}</li>
+        </div>
+        )
+        })}
       </h1>
     </div>
   );
