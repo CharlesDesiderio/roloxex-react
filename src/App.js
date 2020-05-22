@@ -1,23 +1,31 @@
-import React from 'react';
-import DisplayCard from './DisplayCard.js';
-
-// HEY THIS IS DUMMY DATA. I've got a whole schema defined in the DisplayCard file. This is 100% going to be removed later so like, yeah.
-const basicData = {
-  name: {
-    family: "Smith",
-    given: "John"
-  }
-}
+import React, { useState, useEffect } from "react";
+import DisplayCard from "./DisplayCard.js";
 
 // OH hey the backend stuff is gonna be done through Glitch, here's the link: https://apple-plausible-ladybug.glitch.me/
 
 const App = () => {
+  const [people, setPeople] = useState([]);
+
+  useEffect(() => {
+    fetch("https://apple-plausible-ladybug.glitch.me/names/")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setPeople(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <DisplayCard data={basicData} />
-
+      {people.map((x) => {
+        return <DisplayCard person={x} />;
+      })}
     </div>
   );
-}
+};
 
 export default App;

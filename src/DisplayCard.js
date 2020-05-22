@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 // rolodex
 
+// id: <-- unix date; can double as creation date, I guess, but why would I need that?
 // name: { family, given } <-- Avoid using first/last. Doesn't work right with names from Asia. Can allow a toggle to select how that contact's name should be ordered, too?
 // phone: ''
 // email: ''
@@ -15,42 +16,17 @@ import React, { useState } from "react";
 // links: [{site-name, url}, ... ] <-- Can literally add anything, but I can detect for titles (facebook/twitter/instagram, etc) to pull a FontAwesome icon.
 // notes: ''
 
-
 const DisplayCard = (person) => {
-  
-  const [people, setPeople] = useState([]);
-  
-  const fetchData = () => {
-    fetch('https://apple-plausible-ladybug.glitch.me/names/')
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setPeople(data)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-    
-  fetchData();
+  console.log(person);
 
   return (
     <div>
-      <h1>
-        {/* {person.data.name.family}, {person.data.name.given} */}
-        {people.map((x) => {
-          return (
-
-            <div>
-          <li>{x.name.family}, {x.name.given}</li>
-          <li>{x.age}</li>
-          <li>{x.gender}</li>
-        <li>{x.address}</li>
-        </div>
-        )
-        })}
-      </h1>
+      <li>
+        Name: {person.person.name.family}, {person.person.name.given}
+      </li>
+      <li>Age: {person.person.age}</li>
+      <li>Gender: {person.person.gender}</li>
+      <li>Address: {person.person.address}</li>
     </div>
   );
 };
