@@ -13,20 +13,24 @@ import React from "react";
 
 // address '' <-- Just a big 'ol textarea field. Not every country does the city/state/zip combo. Saves me from having to parse zip codes, they're different lengths in different countries.
 
-// links: [{site-name, url}, ... ] <-- Can literally add anything, but I can detect for titles (facebook/twitter/instagram, etc) to pull a FontAwesome icon.
+// website: '' <-- Can literally add anything, but I can detect for titles (facebook/twitter/instagram, etc) to pull a FontAwesome icon. Let's keep it to one for now.
 // notes: ''
 
 const DisplayCard = (person) => {
-  console.log(person);
 
   return (
-    <div>
-      <li>
+    <div className="displayCard">
+      <p>
         Name: {person.person.name.family}, {person.person.name.given}
-      </li>
-      <li>Age: {person.person.age}</li>
-      <li>Gender: {person.person.gender}</li>
-      <li>Address: {person.person.address}</li>
+      </p>
+      <p>Phone number: {person.person.phone}</p>
+      <p>E-Mail: {person.person.email}</p>
+      <p>Gender:{person.person.gender}</p>
+      <p>Pronouns:{person.person.pronouns}</p>
+      <p>Birthday: {person.person.birthday}</p>
+      <p>Address: {person.person.address}</p>
+      <p>Website:{person.person.website}</p>
+      <p>Notes:{person.person.notes}</p>
     </div>
   );
 };

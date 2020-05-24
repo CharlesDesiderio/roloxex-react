@@ -1,0 +1,17 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.displayCard {
+    margin: 20px;
+    padding: 16px;
+    background-color: #ccc;
+    width: 40%;
+}
+
+.addPerson {
+    position: absolute;
+    width: 30%;
+    right: 0;
+    top: 0;
+}
