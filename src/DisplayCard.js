@@ -18,6 +18,21 @@ import React from "react";
 
 const DisplayCard = (person) => {
 
+  const deleteItem = (id) => {
+    fetch("https://apple-plausible-ladybug.glitch.me/delete/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        console.log('baleeted')
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="displayCard">
       <p>
@@ -31,6 +46,7 @@ const DisplayCard = (person) => {
       <p>Address: {person.person.address}</p>
       <p>Website:{person.person.website}</p>
       <p>Notes:{person.person.notes}</p>
+      <button onClick={() => deleteItem(person.person.id)}>🗑</button>
     </div>
   );
 };

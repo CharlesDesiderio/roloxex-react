@@ -27,7 +27,9 @@ const AddPerson = () => {
       body: JSON.stringify({ formInfo }),
     })
       .then((res) => res.json())
-      .then(() => setFormInfo(defaultFormInfo))
+      .then(() => {
+        setFormInfo(defaultFormInfo)
+      })
       .catch((err) => console.log(err));
   };
 
