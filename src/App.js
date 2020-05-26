@@ -8,7 +8,7 @@ import './style.css';
 const App = () => {
   const [people, setPeople] = useState([]);
 
-  useEffect(() => {
+  const queryDB = () => {
     fetch("https://apple-plausible-ladybug.glitch.me/names/")
       .then((response) => {
         return response.json();
@@ -19,14 +19,18 @@ const App = () => {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  useEffect(() => {
+    queryDB()
   }, []);
 
   return (
     <div className="App">
       {people.map((x) => {
-        return <DisplayCard key={x._id} person={x} />;
+        return <DisplayCard queryDB={queryDB} key={x._id} person={x} />;
       })}
-      <AddPerson />
+      <AddPerson queryDB={queryDB} />
     </div>
   );
 };

@@ -1,37 +1,7 @@
 import React, { useState } from "react";
 
-const AddPerson = (props) => {
-  const defaultFormInfo = {
-    family: "",
-    given: "",
-    phone: "",
-    email: "",
-    gender: "",
-    pronouns: "",
-    birthday: "",
-    address: "",
-    website: "",
-    notes: "",
-  };
-
-  const [formInfo, setFormInfo] = useState(defaultFormInfo);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch("https://apple-plausible-ladybug.glitch.me/add/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ formInfo }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setFormInfo(defaultFormInfo);
-        props.queryDB();
-      })
-      .catch((err) => console.log(err));
-  };
+const EditPerson = (props) => {
+  const [formInfo, setFormInfo] = useState(props.person);
 
   const handleChange = (e) => {
     setFormInfo({
@@ -40,116 +10,133 @@ const AddPerson = (props) => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("https://apple-plausible-ladybug.glitch.me/edit/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ formInfo }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setFormInfo(formInfo);
+        props.queryDB();
+        props.editItem();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
-    <div className="addPerson">
+    <div className="editPerson">
+      <button className="editButton" onClick={() => props.editItem()}>Cancel</button>
       <form onSubmit={handleSubmit}>
-        <p className="addPerson-p">
-          <label htmlFor="given-name">Given Name: </label>
+        <p className="editPerson-p name-field">
+          <label htmlFor="edit-given-name"></label>
           <input
             onChange={handleChange}
             required
-            id="given-name"
+            id={`${props.person.id}-edit-given-name`}
             name="given"
             type="text"
             value={formInfo.given}
           />
-        </p>
-        <p className="addPerson-p">
-          <label htmlFor="family-name">Family Name: </label>
+
+          <label htmlFor="edit-family-name"></label>
           <input
             onChange={handleChange}
             required
-            id="family-name"
+            id={`${props.person.id}-edit-family-name`}
             name="family"
             type="text"
             value={formInfo.family}
           />
         </p>
-        <p className="addPerson-p">
-          <label htmlFor="phone">Phone Number: </label>
+        <p className="editPerson-p">
+          <label htmlFor="edit-phone">Phone Number: </label>
           <input
             onChange={handleChange}
-            id="phone"
+            id={`${props.person.id}-edit-phone`}
             name="phone"
             type="text"
             value={formInfo.phone}
           />
         </p>
-        <p className="addPerson-p">
-          <label htmlFor="email">E-Mail Address: </label>
+        <p className="editPerson-p">
+          <label htmlFor="edit-email">E-Mail: </label>
           <input
             onChange={handleChange}
-            id="email"
+            id={`${props.person.id}-edit-email`}
             name="email"
-            type="email"
+            type="text"
             value={formInfo.email}
           />
         </p>
-        <p className="addPerson-p">
-          <label htmlFor="gender">Gender: </label>
+        <p className="editPerson-p">
+          <label htmlFor="edit-gender">Gender: </label>
           <input
             onChange={handleChange}
-            id="gender"
+            id={`${props.person.id}-edit-gender`}
             name="gender"
             type="text"
             value={formInfo.gender}
           />
         </p>
-        <p className="addPerson-p">
-          <label htmlFor="pronouns">Pronouns: </label>
+        <p className="editPerson-p">
+          <label htmlFor="edit-pronouns">Pronouns: </label>
           <input
             onChange={handleChange}
-            id="pronouns"
+            id={`${props.person.id}-edit-pronouns`}
             name="pronouns"
             type="text"
             value={formInfo.pronouns}
           />
         </p>
-        <p className="addPerson-p">
-          <label htmlFor="birthday">Birthday: </label>
+        <p className="editPerson-p">
+          <label htmlFor="edit-birthday">Birthday: </label>
           <input
             onChange={handleChange}
-            id="birthday"
+            id={`${props.person.id}-edit-birthday`}
             name="birthday"
             type="text"
             value={formInfo.birthday}
           />
         </p>
-        <p className="addPerson-p">
-          <label htmlFor="address">Address: </label>
+        <p className="editPerson-p">
+          <label htmlFor="edit-address">Address: </label>
           <input
             onChange={handleChange}
-            id="address"
+            id={`${props.person.id}-edit-address`}
             name="address"
             type="text"
             value={formInfo.address}
           />
         </p>
-        <p className="addPerson-p">
-          <label htmlFor="website">Website: </label>
+        <p className="editPerson-p">
+          <label htmlFor="edit-website">Website: </label>
           <input
             onChange={handleChange}
-            id="website"
+            id={`${props.person.id}-edit-website`}
             name="website"
             type="text"
             value={formInfo.website}
           />
         </p>
-        <p className="addPerson-p">
-          <label htmlFor="notes">Notes: </label>
+        <p className="editPerson-p">
+          <label htmlFor="edit-notes">Notes: </label>
           <input
             onChange={handleChange}
-            id="notes"
+            id={`${props.person.id}-edit-notes`}
             name="notes"
             type="textarea"
             value={formInfo.notes}
           />
         </p>
-
-        <button>Send data!</button>
+        <button className="updateButton">Update</button>
       </form>
     </div>
   );
 };
 
-export default AddPerson;
+export default EditPerson;

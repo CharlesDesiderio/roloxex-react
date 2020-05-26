@@ -1,17 +1,80 @@
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .displayCard {
-    margin: 20px;
-    padding: 16px;
-    background-color: #ccc;
-    width: 40%;
+  position: relative;
+  margin: 32px;
+  padding: 16px;
+  background-color: #ccc;
+  width: 500px;
+}
+
+.editPerson {
+  width: 500px;
+  position: relative;
+  background-color: pink;
+  margin: 32px;
+  padding: 16px;
+}
+
+.editButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 30px;
+  right: 5px;
 }
 
 .addPerson {
+  position: absolute;
+  width: 500px;
+  right: 0;
+  top: 0;
+}
+
+.addPerson-p,
+.editPerson-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.addPerson-p label {
+  text-align: right;
+  width: 150px;
+}
+
+.editPerson-p label {
+  width: 150px;
+}
+
+.addPerson-p input,
+.editPerson-p input
+ {
+  width: 350px;
+  margin: 0 32px 0 16px;
+}
+
+.updateButton {
     position: absolute;
-    width: 30%;
-    right: 0;
-    top: 0;
+    bottom: 0;
+    left: 45%;
+}
+
+.name-field {
+    font-size: 1.5rem;
+}
+
+.name-field input {
+    font-size: 1.5rem;
+    width: 200px;
+}
+
+.name-field label {
+    width: 0px;
 }

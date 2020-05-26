@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import EditPerson from './EditPerson.js'
 
 // rolodex
 
@@ -16,7 +17,9 @@ import React from "react";
 // website: '' <-- Can literally add anything, but I can detect for titles (facebook/twitter/instagram, etc) to pull a FontAwesome icon. Let's keep it to one for now.
 // notes: ''
 
-const DisplayCard = (person) => {
+const DisplayCard = (props) => {
+
+const [isEdit, setIsEdit] = useState(false)
 
   const deleteItem = (id) => {
     fetch("https://apple-plausible-ladybug.glitch.me/delete/", {
@@ -28,27 +31,39 @@ const DisplayCard = (person) => {
     })
       .then((res) => res.json())
       .then(() => {
-        console.log('baleeted')
+        props.queryDB();
       })
       .catch((err) => console.log(err));
   };
 
-  return (
+  const editItem = (id) => {
+    setIsEdit(!isEdit);
+  }
+
+  return !isEdit ? (
     <div className="displayCard">
-      <p>
-        Name: {person.person.name.family}, {person.person.name.given}
+      <button className="deleteButton" onClick={() => deleteItem(props.person.id)}>🗑</button>
+      <button className="editButton" onClick={() => editItem(props.person.id)}>Edit</button>
+      <div className="showCard">
+      <p className="displayCard-p name-field">
+        {props.person.family}, {props.person.given}
       </p>
-      <p>Phone number: {person.person.phone}</p>
-      <p>E-Mail: {person.person.email}</p>
-      <p>Gender:{person.person.gender}</p>
-      <p>Pronouns:{person.person.pronouns}</p>
-      <p>Birthday: {person.person.birthday}</p>
-      <p>Address: {person.person.address}</p>
-      <p>Website:{person.person.website}</p>
-      <p>Notes:{person.person.notes}</p>
-      <button onClick={() => deleteItem(person.person.id)}>🗑</button>
+      
+      <p className="displayCard-p">Phone Number: {props.person.phone}</p>
+      <p className="displayCard-p">E-Mail: {props.person.email}</p>
+      <p className="displayCard-p">Gender: {props.person.gender}</p>
+      <p className="displayCard-p">Pronouns: {props.person.pronouns}</p>
+      <p className="displayCard-p">Birthday: {props.person.birthday}</p>
+      <p className="displayCard-p">Address: {props.person.address}</p>
+      <p className="displayCard-p">Website:{props.person.website}</p>
+      <p className="displayCard-p">Notes:{props.person.notes}</p>
+      </div>
+
+      
     </div>
-  );
+  ) : (<div><div className="editCard">
+  <EditPerson queryDB={props.queryDB} editItem={editItem} person={props.person} />
+</div></div>);
 };
 
 export default DisplayCard;
