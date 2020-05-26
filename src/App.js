@@ -25,13 +25,20 @@ const App = () => {
     queryDB()
   }, []);
 
-  return (
+  return (people !== []) ? (
     <div className="App">
-      {people.map((x) => {
+      
+      {people
+      .sort((a, b) => {
+        return a.family.toUpperCase() < b.family.toUpperCase() ? -1 : 1
+      })
+      .map((x) => {
         return <DisplayCard queryDB={queryDB} key={x._id} person={x} />;
       })}
       <AddPerson queryDB={queryDB} />
     </div>
+  ) : (
+    <div><h1>LOADING</h1></div>
   );
 };
 

@@ -28,9 +28,25 @@ const EditPerson = (props) => {
       .catch((err) => console.log(err));
   };
 
+  const deleteItem = (id) => {
+    fetch("https://apple-plausible-ladybug.glitch.me/delete/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        props.queryDB();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="editPerson">
       <button className="editButton" onClick={() => props.editItem()}>Cancel</button>
+      <button className="deleteButton" onClick={() => deleteItem(props.person.id)}>🗑</button>
       <form onSubmit={handleSubmit}>
         <p className="editPerson-p name-field">
           <label htmlFor="edit-given-name"></label>
@@ -42,7 +58,6 @@ const EditPerson = (props) => {
             type="text"
             value={formInfo.given}
           />
-
           <label htmlFor="edit-family-name"></label>
           <input
             onChange={handleChange}
@@ -52,6 +67,7 @@ const EditPerson = (props) => {
             type="text"
             value={formInfo.family}
           />
+
         </p>
         <p className="editPerson-p">
           <label htmlFor="edit-phone">Phone Number: </label>

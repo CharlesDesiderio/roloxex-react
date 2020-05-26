@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import EditPerson from './EditPerson.js'
+import EditPerson from "./EditPerson.js";
 
 // rolodex
 
@@ -18,52 +18,107 @@ import EditPerson from './EditPerson.js'
 // notes: ''
 
 const DisplayCard = (props) => {
+  const [isEdit, setIsEdit] = useState(false);
 
-const [isEdit, setIsEdit] = useState(false)
-
-  const deleteItem = (id) => {
-    fetch("https://apple-plausible-ladybug.glitch.me/delete/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ id }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        props.queryDB();
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const editItem = (id) => {
+  const editItem = () => {
     setIsEdit(!isEdit);
-  }
+  };
 
   return !isEdit ? (
     <div className="displayCard">
-      <button className="deleteButton" onClick={() => deleteItem(props.person.id)}>🗑</button>
-      <button className="editButton" onClick={() => editItem(props.person.id)}>Edit</button>
+      <button className="editButton" onClick={() => editItem(props.person.id)}>
+        Edit
+      </button>
       <div className="showCard">
-      <p className="displayCard-p name-field">
-        {props.person.family}, {props.person.given}
-      </p>
-      
-      <p className="displayCard-p">Phone Number: {props.person.phone}</p>
-      <p className="displayCard-p">E-Mail: {props.person.email}</p>
-      <p className="displayCard-p">Gender: {props.person.gender}</p>
-      <p className="displayCard-p">Pronouns: {props.person.pronouns}</p>
-      <p className="displayCard-p">Birthday: {props.person.birthday}</p>
-      <p className="displayCard-p">Address: {props.person.address}</p>
-      <p className="displayCard-p">Website:{props.person.website}</p>
-      <p className="displayCard-p">Notes:{props.person.notes}</p>
-      </div>
+        <p className="displayCard-p name-field">
+          {props.person.given} {props.person.family}
+        </p>
+        {props.person.phone ? (
+          <div className="displayCard-p">
+          <p className="displayCard-p">
+            Phone Number: </p>
+            <p className="contact-info">{props.person.phone}</p>
+          </div>
+        ) : (
+          ""
+        )}
 
-      
+        {props.person.email ? (
+          <div className="displayCard-p">
+            <p className="label-p">E-Mail: </p>
+            <p className="contact-info">{props.person.email}</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {props.person.gender ? (
+          <div className="displayCard-p">
+          <p className="displayCard-p">
+          
+            Gender: </p>
+            <p className="contact-info">{props.person.gender}</p>
+            </div>
+        ) : (
+          ""
+        )}
+        {props.person.pronouns ? (
+          <div className="displayCard-p">
+          <p className="displayCard-p">
+            Pronouns: </p>
+            <p className="contact-info">{props.person.pronouns}</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {props.person.birthday ? (
+          <div className="displayCard-p">
+          <p className="displayCard-p">
+            Birthday: </p>
+            <p className="contact-info">{props.person.birthday}</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {props.person.address ? (
+          <div className="displayCard-p">
+          <p className="displayCard-p">
+            Address: </p>
+            <p className="contact-info">{props.person.address}</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {props.person.website ? (
+          <div className="displayCard-p">
+          <p className="displayCard-p">
+            Website: </p>
+            <p className="contact-info">{props.person.website}</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {props.person.notes ? (
+          <div className="displayCard-p">
+          <p className="displayCard-p">
+            Notes:</p>
+            <p className="contact-info">{props.person.notes}</p>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
-  ) : (<div><div className="editCard">
-  <EditPerson queryDB={props.queryDB} editItem={editItem} person={props.person} />
-</div></div>);
+  ) : (
+    <div>
+      <div className="editCard">
+        <EditPerson
+          queryDB={props.queryDB}
+          editItem={editItem}
+          person={props.person}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default DisplayCard;

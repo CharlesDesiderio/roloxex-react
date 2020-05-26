@@ -1,27 +1,41 @@
 body {
   font-family: "Poppins", sans-serif;
+  color: #2c3e50;
+}
+
+.App {
+  width: 100%;
 }
 
 .displayCard {
   position: relative;
-  margin: 32px;
+  margin: 32px auto 32px auto;
   padding: 16px;
-  background-color: #ccc;
+  background-color: #ecf0f1;
   width: 500px;
 }
 
-.editPerson {
+.editCard {
   width: 500px;
   position: relative;
   background-color: pink;
-  margin: 32px;
+    margin: 32px auto 32px auto;
   padding: 16px;
+  margin: auto;
 }
 
 .editButton {
   position: absolute;
   top: 5px;
   right: 5px;
+  border: none;
+  margin: 4px;
+  padding: 4px 16px 4px 16px;
+  background-color: #2980b9;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 12px;
+
 }
 
 .deleteButton {
@@ -32,9 +46,25 @@ body {
 
 .addPerson {
   position: absolute;
-  width: 500px;
-  right: 0;
-  top: 0;
+  width: 150px;
+  height: 5px;
+  right: 25px;
+  top: 25px;
+  overflow: hidden;
+  transition: .3s;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 32px;
+  border-radius: 12px;
+  
+}
+
+.addPerson input {
+  padding: 4px;
+  border: none;
+  border-radius: 12px;
 }
 
 .addPerson-p,
@@ -68,6 +98,9 @@ body {
 
 .name-field {
     font-size: 1.5rem;
+    color: #3498db;
+    font-weight: 700;
+    font-size: 2rem;
 }
 
 .name-field input {
@@ -76,5 +109,42 @@ body {
 }
 
 .name-field label {
-    width: 0px;
+  width: 0px;
+}
+
+.displayCard-p {
+  width: 100%;
+  margin: 2px;
+}
+
+.contact-info {
+  background-color: #3498db;
+  padding: 4px 8px 4px 8px;
+  width: 80%;
+  margin: 4px 2px 8px 16px;
+  border-radius: 0 12px 12px 0;
+}
+
+.label-p {
+  margin: 0;
+  padding: 0;
+  width: 90%;
+}
+
+.newContact {
+  width: 150px;
+  margin: auto;
+  padding: 4px 16px 4px 16px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #3498db;
+  transition: .2s;
+}
+
+.newContact:hover {
+  color: #3498db;
+  background-color: white;
+  border: 2px solid #3498db;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const AddPerson = (props) => {
   const defaultFormInfo = {
@@ -15,6 +15,18 @@ const AddPerson = (props) => {
   };
 
   const [formInfo, setFormInfo] = useState(defaultFormInfo);
+
+  const expandBox = useRef(null);
+
+  let addContactShow = false;
+
+  const showAddBox = () => {
+    expandBox.current.style.backgroundColor = addContactShow ? "white" : "#3498db";
+    expandBox.current.style.boxShadow = addContactShow ? "none" : "0px 0px 8px black"
+    expandBox.current.style.height = addContactShow ? "5px" : "auto";
+    expandBox.current.style.width = addContactShow ? "150px" : "auto";
+    addContactShow = !addContactShow;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,7 +53,8 @@ const AddPerson = (props) => {
   };
 
   return (
-    <div className="addPerson">
+    <div ref={expandBox} className="addPerson">
+    <button onClick={() => showAddBox()} className="newContact">New Contact</button>
       <form onSubmit={handleSubmit}>
         <p className="addPerson-p">
           <label htmlFor="given-name">Given Name: </label>
