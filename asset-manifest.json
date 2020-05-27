@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/roloxex-react/static/css/main.1a2d96cd.chunk.css",
+    "main.js": "/roloxex-react/static/js/main.25f28cb2.chunk.js",
+    "main.js.map": "/roloxex-react/static/js/main.25f28cb2.chunk.js.map",
+    "runtime-main.js": "/roloxex-react/static/js/runtime-main.e758f59e.js",
+    "runtime-main.js.map": "/roloxex-react/static/js/runtime-main.e758f59e.js.map",
+    "static/js/2.0dae382a.chunk.js": "/roloxex-react/static/js/2.0dae382a.chunk.js",
+    "static/js/2.0dae382a.chunk.js.map": "/roloxex-react/static/js/2.0dae382a.chunk.js.map",
+    "index.html": "/roloxex-react/index.html",
+    "precache-manifest.df6965e3f1bf0ef341f7ad410a806fb0.js": "/roloxex-react/precache-manifest.df6965e3f1bf0ef341f7ad410a806fb0.js",
+    "service-worker.js": "/roloxex-react/service-worker.js",
+    "static/css/main.1a2d96cd.chunk.css.map": "/roloxex-react/static/css/main.1a2d96cd.chunk.css.map",
+    "static/js/2.0dae382a.chunk.js.LICENSE.txt": "/roloxex-react/static/js/2.0dae382a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e758f59e.js",
+    "static/js/2.0dae382a.chunk.js",
+    "static/css/main.1a2d96cd.chunk.css",
+    "static/js/main.25f28cb2.chunk.js"
+  ]
+}
