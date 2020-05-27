@@ -45,10 +45,10 @@ const EditPerson = (props) => {
 
   return (
     <div className="editPerson">
-      <button className="editButton" onClick={() => props.editItem()}>Cancel</button>
-      <button className="deleteButton" onClick={() => deleteItem(props.person.id)}>🗑</button>
+      <button className="editButton cancelButton" onClick={() => props.editItem()}><span role="img" aria-label="Cancel">❌</span></button>
+      <button className="deleteButton" onClick={() => deleteItem(props.person.id)}><span role="img" aria-label="Delete">🗑️</span></button>
       <form onSubmit={handleSubmit}>
-        <p className="editPerson-p name-field">
+        <p className="name-field">
           <label htmlFor="edit-given-name"></label>
           <input
             onChange={handleChange}

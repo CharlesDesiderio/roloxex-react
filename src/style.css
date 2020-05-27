@@ -3,6 +3,10 @@ body {
   color: #2c3e50;
 }
 
+button {
+  box-sizing: border-box;
+}
+
 .App {
   width: 100%;
 }
@@ -13,15 +17,24 @@ body {
   padding: 16px;
   background-color: #ecf0f1;
   width: 500px;
+  border-radius: 12px;
 }
 
 .editCard {
   width: 500px;
   position: relative;
   background-color: pink;
-    margin: 32px auto 32px auto;
+  margin: 32px auto 32px auto;
   padding: 16px;
-  margin: auto;
+  color: #ecf0f1;
+  background-color: #3498db;
+  border-radius: 12px;
+  padding-bottom: 50px;
+}
+
+.editCard input {
+  border: none;
+  border-bottom: 2px solid black;
 }
 
 .editButton {
@@ -31,30 +44,50 @@ body {
   border: none;
   margin: 4px;
   padding: 4px 16px 4px 16px;
-  background-color: #2980b9;
+  background-color: #3498db;
   color: white;
   font-size: 1.2rem;
   border-radius: 12px;
+  transition: .3s;
+  border: 2px solid #3498db;
+}
 
+.editButton:hover {
+  color: #3498db;
+  background-color: white;
+  border: 2px solid #3498db;
 }
 
 .deleteButton {
   position: absolute;
-  top: 30px;
+  top: 50px;
   right: 5px;
+  border: none;
+  margin: 4px;
+  padding: 4px 16px 4px 16px;
+  background-color: white;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  transition: .3s;
+  border: 2px solid white;
 }
+
+.deleteButton:hover {
+  border: 2px solid white;
+  background-color: #c0392b;
+}
+
 
 .addPerson {
   position: absolute;
   width: 150px;
-  height: 5px;
+  height: 10px;
   right: 25px;
   top: 25px;
   overflow: hidden;
   transition: .3s;
   background-color: white;
   color: black;
-  font-weight: 700;
   font-size: 1.2rem;
   padding: 32px;
   border-radius: 12px;
@@ -70,12 +103,12 @@ body {
 .addPerson-p,
 .editPerson-p {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  margin: 4px 2px 8px 16px;
 }
 
 .addPerson-p label {
-  text-align: right;
   width: 150px;
 }
 
@@ -85,15 +118,47 @@ body {
 
 .addPerson-p input,
 .editPerson-p input
- {
+{
   width: 350px;
-  margin: 0 32px 0 16px;
+  margin: 2px;
+  margin: 2px 2px 2px 16px;
+  border-radius: 0 12px 12px 0;
+  font-size: 1.2rem;
+  padding: 4px;
 }
+
+.editPerson-p input {
+  border: none;
+  padding: 4px 8px 4px 8px;
+  width: 80%;
+  margin: 2px 2px 2px 16px;
+  border-radius: 0 12px 12px 0;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
 
 .updateButton {
     position: absolute;
     bottom: 0;
-    left: 45%;
+    left: 40%;
+    margin-bottom: 16px;
+    border: none;
+    margin: 4px;
+    padding: 4px 16px 4px 16px;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    transition: .3s;
+    background-color: white;
+    color: #3498db;
+    border: 2px solid white;
+}
+
+.updateButton:hover {
+  background-color: #3498db;
+  color: white;
+  border: 2px solid white;
+
 }
 
 .name-field {
@@ -101,11 +166,15 @@ body {
     color: #3498db;
     font-weight: 700;
     font-size: 2rem;
+    margin: 2px;
 }
 
 .name-field input {
-    font-size: 1.5rem;
-    width: 200px;
+    font-size: 2rem;
+    width: 40%;
+    margin: 2px;
+    color: #2c3e50;
+
 }
 
 .name-field label {
@@ -132,19 +201,53 @@ body {
 }
 
 .newContact {
-  width: 150px;
   margin: auto;
   padding: 4px 16px 4px 16px;
   font-size: 1.2rem;
   border: none;
   border-radius: 15px;
   color: white;
-  background-color: #3498db;
+  background-color: white;
   transition: .2s;
+  border: 2px solid #3498db;
 }
 
 .newContact:hover {
   color: #3498db;
+  background-color: #3498db;
+  border: 2px solid white;
+}
+
+.cancelButton {
+  color: #3498db;
   background-color: white;
-  border: 2px solid #3498db;
+  transition: .3s;
+}
+
+.cancelButton:hover {
+  color: white;
+  background-color: #3498db;
+  border: 2px solid white;
+}
+
+.submitContact {
+  margin-bottom: 16px;
+  margin-top: 16px;
+  border: none;
+  margin: 4px;
+  width: 40%;
+  margin-left: 30%;
+  padding: 4px 16px 4px 16px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  transition: .3s;
+  background-color: white;
+  color: #3498db;
+  border: 2px solid white;
+}
+
+.submitContact:hover {
+background-color: #3498db;
+color: white;
+border: 2px solid white;
 }

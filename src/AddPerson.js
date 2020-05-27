@@ -17,15 +17,18 @@ const AddPerson = (props) => {
   const [formInfo, setFormInfo] = useState(defaultFormInfo);
 
   const expandBox = useRef(null);
+  const toggleButton = useRef(null);
 
   let addContactShow = false;
 
   const showAddBox = () => {
     expandBox.current.style.backgroundColor = addContactShow ? "white" : "#3498db";
     expandBox.current.style.boxShadow = addContactShow ? "none" : "0px 0px 8px black"
-    expandBox.current.style.height = addContactShow ? "5px" : "auto";
+    expandBox.current.style.height = addContactShow ? "10px" : "auto";
     expandBox.current.style.width = addContactShow ? "150px" : "auto";
+    toggleButton.current.innerHTML = addContactShow ? "➕" : "❌"
     addContactShow = !addContactShow;
+
   }
 
   const handleSubmit = (e) => {
@@ -54,10 +57,10 @@ const AddPerson = (props) => {
 
   return (
     <div ref={expandBox} className="addPerson">
-    <button onClick={() => showAddBox()} className="newContact">New Contact</button>
+    <button onClick={() => showAddBox()} className="newContact"><span role="img" ref={toggleButton} aria-label="Add Contact">➕</span></button>
       <form onSubmit={handleSubmit}>
         <p className="addPerson-p">
-          <label htmlFor="given-name">Given Name: </label>
+          <label htmlFor="given-name">Given Name *: </label>
           <input
             onChange={handleChange}
             required
@@ -68,7 +71,7 @@ const AddPerson = (props) => {
           />
         </p>
         <p className="addPerson-p">
-          <label htmlFor="family-name">Family Name: </label>
+          <label htmlFor="family-name">Family Name *: </label>
           <input
             onChange={handleChange}
             required
@@ -159,7 +162,7 @@ const AddPerson = (props) => {
           />
         </p>
 
-        <button>Send data!</button>
+        <button className="submitContact">Add Contact</button>
       </form>
     </div>
   );

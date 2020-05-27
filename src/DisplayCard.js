@@ -27,7 +27,7 @@ const DisplayCard = (props) => {
   return !isEdit ? (
     <div className="displayCard">
       <button className="editButton" onClick={() => editItem(props.person.id)}>
-        Edit
+      <span role="img" aria-label="Edit">📝</span>
       </button>
       <div className="showCard">
         <p className="displayCard-p name-field">
