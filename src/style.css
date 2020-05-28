@@ -7,6 +7,10 @@ button {
   box-sizing: border-box;
 }
 
+h1 {
+  text-align: center;
+}
+
 .App {
   width: 100%;
 }

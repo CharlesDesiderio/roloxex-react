@@ -7,7 +7,7 @@ import './style.css';
 
 const App = () => {
   const [people, setPeople] = useState([]);
-
+  console.log(people)
   const queryDB = () => {
     fetch("https://apple-plausible-ladybug.glitch.me/names/")
       .then((response) => {
@@ -25,7 +25,7 @@ const App = () => {
     queryDB()
   }, []);
 
-  return (people !== []) ? (
+  return people.length ? (
     <div className="App">
       
       {people
